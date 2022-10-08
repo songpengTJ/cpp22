@@ -1,16 +1,17 @@
 ﻿#include <string.h>
-
+
+#define MAX_LENGTH 10
+
 int main(){
-   
+
    char f_str[MAX_LENGTH] = {0};	// 用于定义查找字符串
    int find_mode = 0;				// 用于保存查找模式，默认为0，即完全匹配模式
    int res;							// 用于保存查找结果
-   
+
          case 6: {
             int score = 0;			// 用于保存匹配项目的个数
             puts("请输入要查找的字符串：");
-            puts("“=”开始表示完全匹配，“?”用于替代一个字符，“*”用于替代多个
-            字符");
+            puts("“=”开始表示完全匹配，“?”用于替代一个字符，“*”用于替代多个字符");
             scanf(GET_NAME, f_str);	// 用户输入查找字符串
             if (f_str[0] != '=')		// 判断是否是模糊查找模式
                find_mode = 1;
@@ -34,7 +35,6 @@ int main(){
             if (score < 1)
                puts("找不到匹配的项目");
          }
-   
 }
 
 
