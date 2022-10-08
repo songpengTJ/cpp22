@@ -1,0 +1,69 @@
+style "widgets"								// 定义所有界面构件通用的样式
+{
+   xthickness = 2
+   ythickness = 2
+   fg[ACTIVE] = "#FFFFFF"
+   fg[SELECTED] = "#003366"
+   fg[NORMAL] = "#000000"
+   fg[PRELIGHT] = "#FFFFFF"
+   fg[INSENSITIVE] = "#999999"
+   bg[ACTIVE] = "#003366"
+   bg[SELECTED] = "#FFFFFF"
+   bg[NORMAL] = "#666666"
+   bg[PRELIGHT] = "#003366"
+   bg[INSENSITIVE] = "#666666"
+   bg_pixmap[NORMAL] = "./pixmaps/bkmap.png"	// 定义背景图像
+}
+style "modelwindow"								// 为模式窗体定义的样式
+{
+   xthickness = 2
+   ythickness = 2
+   fg[ACTIVE] = "#FFFFFF"
+   fg[SELECTED] = "#003366"
+   fg[NORMAL] = "#000000"
+   fg[PRELIGHT] = "#FFFFFF"
+   fg[INSENSITIVE] = "#999999"
+   bg[ACTIVE] = "#003366"
+   bg[SELECTED] = "#FFFFFF"
+   bg[NORMAL] = "#666666"
+   bg[PRELIGHT] = "#003366"
+   bg[INSENSITIVE] = "#666666"
+   bg_pixmap[NORMAL] = ""				// 背景图像路径为空时，将显示白色
+}
+style "first"							// 为程序开始时的欢迎屏定义的样式
+{
+   xthickness = 2
+   ythickness = 2
+   fg[ACTIVE] = "#FFFFFF"
+   fg[SELECTED] = "#003366"
+   fg[NORMAL] = "#FFFFFF"
+   fg[PRELIGHT] = "#FFFFFF"
+   font_name = "Sans Bold 14"
+}
+style "labels" = "widgets" {		// 标签构件的样式继承widgets的样式
+   font_name = "Sans Bold 14"			// 增加对字体的定义
+}
+style "buttons" = "widgets" {		// 按钮构件的样式继承widgets的样式是
+   GtkButton::inner-border = { 10, 10, 10, 10 }// 对按钮构件内部边框进行定义
+}
+style "checks" = "buttons" {
+   GtkCheckButton::indicator-size = 25
+}
+style "evselect" {								// 自定义的一种样式
+   bg_pixmap[NORMAL] = "./pixmaps/select.png"
+   // 只设置了背景图像，其它属性则是系统默认值
+}
+style "calendar" {
+   font_name = "10"
+}
+class "GtkWindow" style "widgets"	// 定义窗体构件类的风格使用widgets样式
+class "GtkLabel" style "labels"
+class "GtkCheckButton" style "checks"
+class "Gtk*Button" style "buttons"	// 定义所有按钮类的风格都使用buttons样式
+#class "GtkEventBox" style "widgets"	// 这是一条被注释的样式
+class "GtkCalendar" style "calendar"
+widget "*.first_win" style "first"
+// 定义所有名为first_win的窗体构件使用first样式
+widget "*.evselect" style "evselect"
+widget "modelwindow" style "modelwindow"
+// 定义名为modelwindow的窗体构件使用的样式
